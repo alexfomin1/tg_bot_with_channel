@@ -1,5 +1,4 @@
 from aiogram import types
-from decouple import config
 from dispatcher import dp
 import config
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -32,5 +31,5 @@ async def setlink_command(message: types.Message):
 		config.IS_POSTING_REQUESTED = False
 		inline_btn = InlineKeyboardButton('Get a link!', callback_data='get_link_button')
 		inline_kb = InlineKeyboardMarkup().add(inline_btn)
-		await message.bot.send_message(config('CHANNEL_ID'), message.text, reply_markup=inline_kb)
+		await message.bot.send_message(config.CHANNEL_ID, message.text, reply_markup=inline_kb)
 		await message.answer('Post has been posted successfully!')

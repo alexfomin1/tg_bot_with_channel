@@ -1,6 +1,6 @@
 from aiogram import types
 from aiogram.dispatcher.filters import BoundFilter
-from decouple import config
+import config
 
 class IsOwnerFilter(BoundFilter):
 	key = 'is_owner'
@@ -9,7 +9,7 @@ class IsOwnerFilter(BoundFilter):
 		self.is_owner = is_owner
 
 	async def check(self, message: types.Message):
-		return message.from_user.id == config('BOT_OWNER')
+		return message.from_user.id == config.BOT_OWNER
 
 
 class IsAdminFilter(BoundFilter):

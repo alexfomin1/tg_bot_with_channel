@@ -1,5 +1,4 @@
 from aiogram import types
-from decouple import config
 from dispatcher import dp
 import config
 from decouple import config
@@ -8,7 +7,7 @@ from decouple import config
 @dp.callback_query_handler(lambda x: x.data == 'get_link_button')
 async def process_callback_get_link_button(c: types.CallbackQuery):
 	try:
-		member = await bot.get_chat_member(config('CHANNEL_ID'), x.from_user.id)
+		member = await bot.get_chat_member(config.CHANNEL_ID, x.from_user.id)
 
 		if (member['status'] in ('member', 'creator', 'administrator')):
 			with open('link.txt', 'r') as f:
