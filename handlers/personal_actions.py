@@ -23,7 +23,7 @@ async def getlink_command(message: types.Message):
 		content = f.readlines()
 		f.close()
 
-	await message.answer(f'Current link: {content[0].strip()}')
+	await message.answer('Current link: {}'.format(content[0].strip()))
 
 @dp.message_handler(is_owner=True)
 async def setlink_command(message: types.Message):
